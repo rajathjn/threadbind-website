@@ -1,0 +1,35 @@
+---
+// The eight weaves of a run as a sampler border: one patch per weave, cleared ones crossed off.
+import { exampleRun } from '../data/weave';
+interface Props { cleared?: number; class?: string; palette?: 'studio' | 'cozy'; }
+const { cleared = 3, class: className, palette = 'studio' } = Astro.props;
+---
+<ol class:list={['patches', `patches--${palette}`, className]} aria-label="An example run of eight weaves">
+  {exampleRun.map((w, i) => (
+    <li data-tier={w.tier} data-done={i < cleared ? '' : undefined} data-now={i === cleared ? '' : undefined}>
+      <span class="patch" aria-hidden="true"></span>
+      <strong>{w.name === '?' ? 'Not yet drawn' : w.name}</strong>
+      <span class="num">{w.target ? `Target ${w.target.toLocaleString('en-GB')}` : `${w.tier} tier`}</span>
+      <span class="visually-hidden">{i < cleared ? ', cleared' : i === cleared ? ', being played' : ''}</span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .patches { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; }
+  li { display: grid; align-content: start; gap: 2px; font-size: 15px; }
+  strong { font-size: 17px; line-height: 1.2; }
+  .patch { position: relative; aspect-ratio: 1; margin-bottom: 10px; background: var(--holes), var(--forest); }
+  li[data-tier='Medium'] .patch { background: var(--holes), var(--oxblood); }
+  li[data-tier='Hard'] .patch { background: var(--holes), #3B1520; }
+  /* Cozy follows the game's run track: sage easy, vermilion medium, deep red hard. */
+  .patches--cozy li[data-tier='Easy'] .patch { background: var(--holes), var(--cozy-sage); }
+  .patches--cozy li[data-tier='Medium'] .patch { background: var(--holes), var(--cozy-trace-deep); }
+  .patches--cozy li[data-tier='Hard'] .patch { background: var(--holes), #7D2413; }
+  .patches--cozy li[data-done] .patch::before, .patches--cozy li[data-done] .patch::after { background: var(--cozy-parchment); }
+  .patches--cozy li[data-now] .patch { box-shadow: inset 0 0 0 5px var(--cozy-parchment); }
+  li[data-now] .patch { box-shadow: inset 0 0 0 5px var(--vermilion); }
+  li[data-done] .patch::before, li[data-done] .patch::after { content: ''; position: absolute; left: 22%; right: 22%; top: calc(50% - 4px); height: 8px; border-radius: 4px; background: var(--saffron); transform: rotate(45deg); }
+  li[data-done] .patch::after { transform: rotate(-45deg); }
+  @media (max-width: 760px) { .patches { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 24px; } }
+</style>

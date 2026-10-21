@@ -1,0 +1,58 @@
+---
+import Stitched from './Stitched.astro';
+import { site, nav, legal } from '../site.config';
+// The address may break before the @ on narrow screens, never inside the domain.
+const [user, domain] = site.email.split('@');
+---
+<footer class="foot">
+  <div class="wrap">
+    <p class="sign" role="img" aria-label="Worked by ThreadBind Studios">
+      <Stitched text="Worked by" class="sign-a" decorative />
+      <Stitched text="ThreadBind" class="sign-b" decorative />
+    </p>
+    <div class="cols">
+      <p class="about">ThreadBind Studios is an independent game studio. Our first game, Weave, is in development for iOS and Android.</p>
+      <nav aria-label="Footer">
+        <h2>Studio</h2>
+        <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+      </nav>
+      <div>
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href={site.forms.contact} target="_blank" rel="noopener">Contact us</a></li>
+          <li><a href={site.forms.feedback} target="_blank" rel="noopener">Send feedback</a></li>
+          <li><a href={site.forms.waitlist} target="_blank" rel="noopener">Join the waitlist</a></li>
+          <li><a href={`mailto:${site.email}`}>{user}<wbr />@{domain}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow</h2>
+        <ul>
+          {site.socials.map((s) => <li>{s.href ? <a href={s.href} rel="me noopener" target="_blank">{s.label}</a> : <span>{s.label} <em>soon</em></span>}</li>)}
+        </ul>
+      </div>
+    </div>
+    <p class="base small">© 2026 ThreadBind Studios · {legal.map((l, i) => <>{i > 0 && ' · '}<a href={l.href}>{l.label}</a></>)} · <button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button></p>
+  </div>
+</footer>
+
+<style>
+  .foot { background: var(--holes), var(--oxblood); color: var(--floss); padding: var(--section) var(--gutter) 40px; }
+  .sign { display: grid; gap: clamp(10px, 1.6vw, 20px); color: var(--floss); max-width: 760px; }
+  .sign :global(svg) { height: auto; --step: 3ms; }
+  /* Same stitch size on both lines: "Worked by" is 51 stitch columns, "ThreadBind" 59. */
+  .sign :global(.sign-a) { width: 86.4%; color: var(--saffron); }
+  .sign :global(.sign-b) { width: 100%; }
+  .cols { display: grid; grid-template-columns: 2fr 1fr 1.4fr 1fr; gap: 40px; margin-top: 72px; }
+  .about { max-width: 34ch; font-size: 19px; }
+  h2 { font-family: var(--font-face); font-weight: 400; font-size: 21px; margin-bottom: 10px; color: var(--saffron); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline dashed 2px; text-underline-offset: 5px; }
+  em { font-style: normal; font-size: 14px; color: var(--rose); }
+  .base { margin-top: 72px; color: var(--rose); }
+  .base a, .cookie-settings { color: var(--floss); }
+  .cookie-settings { border: 0; background: none; padding: 0; font: inherit; cursor: pointer; }
+  .cookie-settings:hover { text-decoration: underline dashed 2px; text-underline-offset: 5px; }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } .about { grid-column: 1 / -1; } }
+</style>

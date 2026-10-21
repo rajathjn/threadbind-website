@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import { site } from '../site.config';
+
+const faqs = [
+  { q: 'When does Weave come out?', a: 'There is no release date yet. Weave is in development. <a href="' + site.forms.waitlist + '" target="_blank" rel="noopener">Join the waitlist</a> and we will email you when there is a build to play.' },
+  { q: 'Which platforms will it be on?', a: 'iOS and Android. It is designed for phones held upright and played with one hand.' },
+  { q: 'How much will it cost?', a: 'We have not announced pricing. We will say clearly before launch.' },
+  { q: 'How does scoring work?', a: 'A word scores its base (the sum of its letter values) times its mult (its length plus one for every 90° bend in the trace). THREAD with two bends scores 11 × 8 = 88. You can <a href="/weave/#play">try a loom</a> on the Weave page.' },
+  { q: 'What is a seed?', a: 'Every run comes from an eight-character code. Share it and a friend can play exactly the same run.' },
+  { q: 'Can I stream or make videos of Weave?', a: 'Yes, and you can monetise them. Read the <a href="/content-policy/">content policy</a> for the details.' },
+  { q: 'I played a test build. Where do I send feedback or a bug?', a: 'Use the <a href="' + site.forms.feedback + '" target="_blank" rel="noopener">feedback form</a>. For bugs, include your device, its OS version and what you did just before it happened.' },
+  { q: 'How do I get my data deleted?', a: 'Use the <a href="' + site.forms.contact + '" target="_blank" rel="noopener">contact form</a> or email <a href="mailto:' + site.email + '">' + site.email + '</a> and we will remove it. The <a href="/privacy/">privacy policy</a> explains what we hold.' },
+];
+---
+<BaseLayout
+  title="Support and FAQ | ThreadBind Studios"
+  description="Get help with Weave: contact ThreadBind Studios, send feedback or a bug report from a test build, and read answers about release, platforms, scoring and data."
+>
+  <PageHead stitch="Support" title="Support" line="Questions, bugs, feedback or a data request." lede="Pick the route that fits and we'll get back to you." />
+
+  <section class="cloth cloth--saffron routes">
+    <div class="wrap route-grid">
+      <div class="route">
+        <h2 class="h-small">Contact us</h2>
+        <p>Questions about Weave or the studio, press, partnerships, or anything else.</p>
+        <a class="btn btn--forest" href={site.forms.contact} target="_blank" rel="noopener" data-external-form>Open the contact form</a>
+      </div>
+      <div class="route">
+        <h2 class="h-small">Send feedback</h2>
+        <p>Played a build? Tell us what worked, what didn't, and any bugs you hit.</p>
+        <a class="btn btn--forest" href={site.forms.feedback} target="_blank" rel="noopener" data-external-form>Open the feedback form</a>
+      </div>
+      <div class="route">
+        <h2 class="h-small">Email</h2>
+        <p>Prefer email? Write to us directly.</p>
+        <a class="mail" href={`mailto:${site.email}`}>{site.email.split('@')[0]}<wbr />@{site.email.split('@')[1]}</a>
+      </div>
+    </div>
+    <p class="wrap small forms-note">The forms open in a new tab. The contact and feedback forms are hosted by Atlassian.</p>
+  </section>
+
+  <section class="cloth cloth--deep faq">
+    <div class="wrap faq-grid">
+      <h2 class="h-section">Questions</h2>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details>
+            <summary><span>{f.q}</span><span class="toggle" aria-hidden="true"></span></summary>
+            <p set:html={f.a} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .route-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
+  .route { display: grid; align-content: start; gap: 12px; }
+  .route p { max-width: 34ch; }
+  .route .btn { justify-self: start; margin-top: 8px; }
+  .mail { margin-top: 8px; font-weight: 800; font-size: 19px; }
+  .forms-note { margin-top: 40px; }
+  .faq-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .faq-list { display: grid; gap: 8px; }
+  details { background: var(--holes), var(--forest); }
+  summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 20px 22px; cursor: pointer; font-family: var(--font-face); font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.25; }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--saffron); }
+  .toggle { position: relative; flex: none; width: 18px; height: 18px; }
+  .toggle::before, .toggle::after { content: ''; position: absolute; inset: 7px 0; background: var(--saffron); border-radius: 2px; transition: transform 200ms var(--ease); }
+  .toggle::after { transform: rotate(90deg); }
+  details[open] .toggle::after { transform: rotate(0deg); }
+  details p { padding: 0 22px 22px; max-width: 64ch; color: var(--floss-dim); }
+  details p :global(a) { color: var(--saffron); font-weight: 700; }
+  @media (max-width: 900px) { .route-grid, .faq-grid { grid-template-columns: 1fr; } }
+</style>

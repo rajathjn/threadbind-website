@@ -1,0 +1,23 @@
+---
+// The ThreadBind lattice: a basket weave turned 45°, after public/press/threadbind-logo-splash.png.
+interface Props { size?: number; class?: string; title?: string; }
+const { size = 32, class: className, title } = Astro.props;
+const N = 4, cell = 17, origin = 50 - (N * cell) / 2;
+const bars: { x: number; y: number; w: number; h: number }[] = [];
+for (let i = 0; i < N; i++) {
+  for (let j = 0; j < N; j++) {
+    const cx = origin + j * cell + cell / 2, cy = origin + i * cell + cell / 2;
+    const across = (i + j) % 2 === 0;
+    for (const o of [-3.6, 3.6]) {
+      bars.push(across
+        ? { x: cx - 7, y: cy + o - 2.3, w: 14, h: 4.6 }
+        : { x: cx + o - 2.3, y: cy - 7, w: 4.6, h: 14 });
+    }
+  }
+}
+---
+<svg class={className} width={size} height={size} viewBox="0 0 100 100" role={title ? 'img' : undefined} aria-label={title} aria-hidden={title ? undefined : 'true'}>
+  <g transform="rotate(45 50 50)" fill="currentColor">
+    {bars.map((b) => <rect x={b.x} y={b.y} width={b.w} height={b.h} />)}
+  </g>
+</svg>

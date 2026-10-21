@@ -1,0 +1,11 @@
+---
+// Renders text as cross-stitch on a 5x7 grid. Each lit pixel is one X stitch.
+// The SVG is labelled with the text, so headings stay readable to assistive tech.
+import { stitchText } from '../lib/stitch.mjs';
+interface Props { text: string; color?: string; class?: string; label?: string; decorative?: boolean; }
+const { text, color = 'currentColor', class: className, label = text, decorative = false } = Astro.props;
+const { stitches, width, height, strokeWidth } = stitchText(text);
+---
+<svg class:list={['stitched', className]} viewBox={`-2 -2 ${width + 4} ${height + 4}`} role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : label} aria-hidden={decorative ? 'true' : undefined} fill="none" stroke={color} stroke-width={strokeWidth} stroke-linecap="round">
+  {stitches.map((strokes, i) => <g style={`--i:${i}`}>{strokes.map((d) => <path d={d} />)}</g>)}
+</svg>

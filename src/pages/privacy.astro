@@ -1,0 +1,50 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../site.config';
+---
+<LegalLayout
+  title="Privacy policy | ThreadBind Studios"
+  description="How ThreadBind Studios handles data on threadbindstudios.com and in Weave: analytics, the waitlist, contact and feedback forms, and how to have your data deleted."
+  stitch="Privacy"
+  heading="Privacy policy"
+  line="What we collect, and what we do with it."
+  updated="21 October 2026"
+>
+  <p>This policy explains what ThreadBind Studios ("we", "us") collects when you use threadbindstudios.com, join the Weave waitlist, or contact us, and what we do with it. We keep it short because we collect very little.</p>
+
+  <h2>Who we are</h2>
+  <p>ThreadBind Studios is an independent game studio. For anything about your data, use the <a href={site.forms.contact} target="_blank" rel="noopener">contact form</a> or email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+  <h2>What we collect on this website</h2>
+  <h3>Analytics</h3>
+  <p>We use Google Analytics 4 to understand how many people visit and which pages they read. When you first visit, a banner asks whether we may use analytics cookies. Only if you choose <strong>Accept</strong> does Google Analytics set cookies and send Google information such as the pages you view, how you arrived, your approximate location (derived from your IP address), and your device and browser type. We don't use it to identify you and we don't combine it with other data.</p>
+  <p>If you choose <strong>No thanks</strong>, no analytics cookies are set. Google's Consent Mode may still send basic signals without cookies (for example, that a page was viewed) so visits can be counted in aggregate. Your choice is stored in your browser, and you can change it any time with <strong>Cookie settings</strong> at the bottom of every page. Google's use of this data is covered by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>, and you can also install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out add-on</a>.</p>
+  <h3>The waitlist</h3>
+  <p>The waitlist is a Google Form. If you join, we receive the email address and any other answers you give. We use your email only to tell you about Weave: when there's a build to play and when it launches. We don't sell it or share it with anyone else, and you can ask us to remove it at any time.</p>
+  <h3>Contact and feedback forms</h3>
+  <p>The contact and feedback forms are hosted by Atlassian (Jira). We receive what you type into them, which may include your name, email and device details. We use it to reply to you and to fix the game. Atlassian's handling is covered by <a href="https://www.atlassian.com/legal/privacy-policy" target="_blank" rel="noopener">Atlassian's privacy policy</a>.</p>
+  <h3>Email</h3>
+  <p>If you email us, we keep the conversation so we can reply and follow up.</p>
+
+  <h2>The game</h2>
+  <p>Weave is in development and has not been released. Before it launches we will update this policy to describe exactly what the game stores and sends, including anything stored on your device and anything that needs an internet connection, such as a daily puzzle or leaderboards.</p>
+
+  <h2>Who else sees your data</h2>
+  <p>Only the services that run these tools for us: Google (analytics and the waitlist form), Atlassian (contact and feedback forms) and Proton (email). We don't sell personal data, and we share it with no one else unless the law requires it.</p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li>Waitlist emails: until Weave launches and we've told you, or until you ask us to remove yours.</li>
+    <li>Contact and feedback messages: as long as we need them to reply and fix the issue, then deleted.</li>
+    <li>Analytics: Google keeps it for the retention period set in our account (between 2 and 14 months), then deletes it.</li>
+  </ul>
+
+  <h2>Your rights</h2>
+  <p>Depending on where you live, you can ask to see the personal data we hold about you, correct it, delete it, or object to how we use it. Send the request through the <a href={site.forms.contact} target="_blank" rel="noopener">contact form</a> or to <a href={`mailto:${site.email}`}>{site.email}</a> and we'll act on it within 30 days. You can also complain to your local data protection authority.</p>
+
+  <h2>Children</h2>
+  <p>This website and the waitlist are not aimed at children under 13, and we don't knowingly collect their data. If you think a child has given us their details, tell us and we'll delete them.</p>
+
+  <h2>Changes</h2>
+  <p>When this policy changes, we'll update it here and change the date at the top. If the change is significant, we'll tell people on the waitlist.</p>
+</LegalLayout>

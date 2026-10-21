@@ -1,0 +1,41 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../site.config';
+---
+<LegalLayout
+  title="Terms of use | ThreadBind Studios"
+  description="The terms for using threadbindstudios.com and ThreadBind Studios games, including Weave: licence, conduct, purchases, intellectual property and liability."
+  stitch="Terms"
+  heading="Terms of use"
+  line="The rules for this site and our games."
+  updated="21 October 2026"
+>
+  <p>These terms cover threadbindstudios.com and games published by ThreadBind Studios, including Weave and any test builds. By using them you agree to these terms. If you don't agree, please don't use them.</p>
+
+  <h2>Licence</h2>
+  <p>We give you a personal, non-exclusive, non-transferable licence to use our games for your own non-commercial play. Streaming and videos are welcome under the <a href="/content-policy/">content policy</a>.</p>
+
+  <h2>Test builds</h2>
+  <p>Pre-release builds are unfinished. They may contain bugs, lose progress or stop working, and we may reset or end them at any time. Please don't share builds, keys or unreleased details unless we've said you can.</p>
+
+  <h2>Conduct</h2>
+  <p>Don't reverse engineer, modify or redistribute the games, and don't use cheats, exploits or automated tools, especially where other players' scores are involved.</p>
+
+  <h2>Purchases</h2>
+  <p>If a game offers purchases, they are handled by the app store you bought through. Refunds follow that store's policy and the law where you live.</p>
+
+  <h2>Intellectual property</h2>
+  <p>The games, their art, music, code, text and the ThreadBind and Weave names and logos belong to ThreadBind Studios. Fonts and other third-party material belong to their owners and are used under their licences.</p>
+
+  <h2>No warranty</h2>
+  <p>The website and games are provided as they are. We work to keep them running well but can't promise they will always be available or free of errors.</p>
+
+  <h2>Liability</h2>
+  <p>To the extent the law allows, ThreadBind Studios isn't liable for indirect or consequential losses arising from using the website or games. Nothing in these terms limits rights you have as a consumer that can't be limited by law.</p>
+
+  <h2>Changes</h2>
+  <p>We may update these terms. The date at the top shows the latest version, and continuing to use the website or games after a change means you accept it.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about these terms: use the <a href={site.forms.contact} target="_blank" rel="noopener">contact form</a> or email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+</LegalLayout>

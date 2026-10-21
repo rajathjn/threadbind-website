@@ -1,0 +1,19 @@
+---
+// Legal and policy pages: the stitched heading, then one readable column on deep cloth.
+import BaseLayout from './BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+interface Props { title: string; description: string; stitch: string; heading: string; line: string; updated: string; }
+const { title, description, stitch, heading, line, updated } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <PageHead stitch={stitch} title={heading} line={line}><p class="updated">Last updated {updated}</p></PageHead>
+  <section class="cloth cloth--deep legal">
+    <div class="wrap"><div class="prose"><slot /></div></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal { padding-top: clamp(56px, 7vw, 96px); }
+  .legal .prose > :global(h2:first-child) { margin-top: 0; }
+  :global(.page-head .updated) { margin-top: 16px; }
+</style>

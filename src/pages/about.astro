@@ -1,0 +1,41 @@
+---
+// A short, plain about page. The studio's longer story lives on the home page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import { site } from '../site.config';
+---
+<BaseLayout
+  title="About ThreadBind Studios | An independent game studio"
+  description="ThreadBind Studios is a small, independent game studio founded in 2026, working remotely. Our first game is Weave, a roguelike word game for iOS and Android."
+>
+  <PageHead stitch="Studio" title="About ThreadBind Studios" line="A small studio making games about words." lede="Independent, remote, and working on our first game." />
+
+  <section class="cloth cloth--deep about">
+    <div class="wrap about-grid">
+      <div class="prose">
+        <p>ThreadBind Studios is an independent game studio. We started in 2026 to make games where language is the thing you play with, and where a simple rule can hide a lot of depth.</p>
+        <p>Our first game is <a href="/weave/">Weave</a>, a roguelike word game for iOS and Android. You trace words through a grid of letters, and every bend in your path multiplies the score. It's in development now.</p>
+        <p>We take our name from weaving: straight threads, crossed the right way, make a pattern that holds together.</p>
+      </div>
+      <div>
+        <dl class="facts">
+          <div><dt>Founded</dt><dd>2026</dd></div>
+          <div><dt>Team</dt><dd>Independent, remote</dd></div>
+          <div><dt>First game</dt><dd><a href="/weave/">Weave</a>, in development</dd></div>
+          <div><dt>Platforms</dt><dd>iOS and Android</dd></div>
+          <div><dt>Contact</dt><dd><a href={site.forms.contact} target="_blank" rel="noopener">Contact form</a> or <a href={`mailto:${site.email}`}>{site.email.split('@')[0]}<wbr />@{site.email.split('@')[1]}</a></dd></div>
+          <div><dt>Press</dt><dd><a href="/press/">Press kit</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 4fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .facts { margin: 0; display: grid; gap: 18px; }
+  .facts dt { font-size: 15px; color: var(--floss-dim); }
+  .facts dd { margin: 0; font-family: var(--font-face); font-size: 21px; }
+  .facts a { color: var(--saffron); }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,21 @@
+{
+  "hook": {
+    "enabled": true,
+    "limits": {
+      "maxFindings": 5,
+      "maxChars": 8000
+    }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-10-20T20:17:06.227Z",
+        "reason": "agent: Fraunces Soft ExtraBold is Weave's shipped in-game face (Weave/data/fonts/fraunces), used only for game-UI fragments and the Cozy-themed Weave page for brand fidelity"
+      }
+    ]
+  }
+}

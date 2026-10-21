@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T08:57:40.474Z",
+  "title": "Design System: ThreadBind Studios",
+  "extensions": {
+    "colorMeta": {
+      "forest-aida": {
+        "role": "primary",
+        "displayName": "Forest Aida",
+        "canonical": "#0E3A25",
+        "tonalRamp": [
+          "#0A1A12",
+          "#0B2318",
+          "#0C2C1D",
+          "#0D3422",
+          "#0E3A25",
+          "#557362",
+          "#91A395",
+          "#CCD2C7"
+        ]
+      },
+      "forest-deep": {
+        "role": "neutral",
+        "displayName": "Forest Deep",
+        "canonical": "#0A2E1D",
+        "tonalRamp": [
+          "#091610",
+          "#091D14",
+          "#092417",
+          "#0A2A1B",
+          "#0A2E1D",
+          "#536B5C",
+          "#8F9D91",
+          "#CCD0C6"
+        ]
+      },
+      "oxblood-aida": {
+        "role": "secondary",
+        "displayName": "Oxblood Aida",
+        "canonical": "#5C2230",
+        "tonalRamp": [
+          "#211315",
+          "#32171D",
+          "#431B25",
+          "#521F2B",
+          "#5C2230",
+          "#8C626A",
+          "#B4989A",
+          "#DCCDCA"
+        ]
+      },
+      "saffron-aida": {
+        "role": "primary",
+        "displayName": "Saffron Aida",
+        "canonical": "#F2B705",
+        "tonalRamp": [
+          "#4E3F09",
+          "#7D6208",
+          "#AC8407",
+          "#D6A206",
+          "#F2B705",
+          "#F5CB4C",
+          "#F8DB86",
+          "#FAEBC1"
+        ]
+      },
+      "vermilion-floss": {
+        "role": "tertiary",
+        "displayName": "Vermilion Floss",
+        "canonical": "#E8452A",
+        "tonalRamp": [
+          "#4B1D14",
+          "#78291A",
+          "#A53420",
+          "#CD3E26",
+          "#E8452A",
+          "#EE7B65",
+          "#F3A797",
+          "#F8D4C8"
+        ]
+      },
+      "floss-cream": {
+        "role": "neutral",
+        "displayName": "Floss Cream",
+        "canonical": "#F6EBD3",
+        "tonalRamp": [
+          "#4F4F46",
+          "#7F7C6F",
+          "#AFA897",
+          "#D9D0BB",
+          "#F6EBD3",
+          "#F8EFDC",
+          "#F9F2E3",
+          "#FBF5EA"
+        ]
+      },
+      "floss-sage": {
+        "role": "neutral",
+        "displayName": "Floss Sage",
+        "canonical": "#CFDCCB",
+        "tonalRamp": [
+          "#444A44",
+          "#6C746B",
+          "#939E91",
+          "#B7C3B4",
+          "#CFDCCB",
+          "#DDE4D6",
+          "#E8EBDF",
+          "#F3F2E9"
+        ]
+      },
+      "rose-floss": {
+        "role": "neutral",
+        "displayName": "Rose Floss",
+        "canonical": "#F0C9C2",
+        "tonalRamp": [
+          "#4E4541",
+          "#7C6B66",
+          "#AA908B",
+          "#D4B2AC",
+          "#F0C9C2",
+          "#F4D7D0",
+          "#F7E3DB",
+          "#FAEFE7"
+        ]
+      },
+      "cozy-forest-900": {
+        "role": "cozy",
+        "displayName": "Cozy Forest 900",
+        "canonical": "#023019",
+        "tonalRamp": [
+          "#06170F",
+          "#051E12",
+          "#042515",
+          "#032C17",
+          "#023019",
+          "#4D6C5A",
+          "#8C9E8F",
+          "#CAD0C5"
+        ]
+      },
+      "cozy-forest-800": {
+        "role": "cozy",
+        "displayName": "Cozy Forest 800",
+        "canonical": "#024022",
+        "tonalRamp": [
+          "#061C11",
+          "#052616",
+          "#04301B",
+          "#033A1F",
+          "#024022",
+          "#4D7760",
+          "#8CA593",
+          "#CAD3C7"
+        ]
+      },
+      "cozy-forest-700": {
+        "role": "cozy",
+        "displayName": "Cozy Forest 700",
+        "canonical": "#03502A",
+        "tonalRamp": [
+          "#072014",
+          "#062E1A",
+          "#053C20",
+          "#044826",
+          "#03502A",
+          "#4E8265",
+          "#8CAC97",
+          "#CAD6C8"
+        ]
+      },
+      "cozy-forest-500": {
+        "role": "cozy",
+        "displayName": "Cozy Forest 500",
+        "canonical": "#046A38",
+        "tonalRamp": [
+          "#072818",
+          "#063B21",
+          "#054E2A",
+          "#045F32",
+          "#046A38",
+          "#4E956F",
+          "#8CB89D",
+          "#CADCCB"
+        ]
+      },
+      "cozy-trace": {
+        "role": "cozy",
+        "displayName": "Cozy Trace",
+        "canonical": "#E34222",
+        "tonalRamp": [
+          "#4A1C11",
+          "#762716",
+          "#A1321B",
+          "#C93C1F",
+          "#E34222",
+          "#EB7960",
+          "#F1A693",
+          "#F7D4C7"
+        ]
+      },
+      "cozy-trace-deep": {
+        "role": "cozy",
+        "displayName": "Cozy Trace Deep",
+        "canonical": "#C83A1E",
+        "tonalRamp": [
+          "#421A10",
+          "#682314",
+          "#8E2C18",
+          "#B1341C",
+          "#C83A1E",
+          "#D8735D",
+          "#E5A392",
+          "#F2D2C6"
+        ]
+      },
+      "cozy-salmon": {
+        "role": "cozy",
+        "displayName": "Cozy Salmon",
+        "canonical": "#F2B8A1",
+        "tonalRamp": [
+          "#4E4037",
+          "#7D6256",
+          "#AC8474",
+          "#D6A38F",
+          "#F2B8A1",
+          "#F5CBB9",
+          "#F8DBCC",
+          "#FAEBE0"
+        ]
+      },
+      "cozy-parchment": {
+        "role": "cozy",
+        "displayName": "Cozy Parchment",
+        "canonical": "#F9EBD7",
+        "tonalRamp": [
+          "#504F48",
+          "#817C71",
+          "#B1A89A",
+          "#DCD0BE",
+          "#F9EBD7",
+          "#FAEFDF",
+          "#FBF2E5",
+          "#FBF5EB"
+        ]
+      },
+      "cozy-paper": {
+        "role": "cozy",
+        "displayName": "Cozy Paper",
+        "canonical": "#FCF5EB",
+        "tonalRamp": [
+          "#51524E",
+          "#82817B",
+          "#B3AFA8",
+          "#DFD9D0",
+          "#FCF5EB",
+          "#FCF6ED",
+          "#FCF7EE",
+          "#FCF7EF"
+        ]
+      },
+      "cozy-sage": {
+        "role": "cozy",
+        "displayName": "Cozy Sage",
+        "canonical": "#72A480",
+        "tonalRamp": [
+          "#283A2D",
+          "#3D5845",
+          "#52765D",
+          "#659272",
+          "#72A480",
+          "#9BBDA2",
+          "#BED2BE",
+          "#E0E7DA"
+        ]
+      },
+      "cozy-dim": {
+        "role": "cozy",
+        "displayName": "Cozy Dim",
+        "canonical": "#B0C4A7",
+        "tonalRamp": [
+          "#3A4339",
+          "#5C6859",
+          "#7E8D78",
+          "#9CAE94",
+          "#B0C4A7",
+          "#C7D4BD",
+          "#DAE1CF",
+          "#EDEEE1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Stitched display",
+        "purpose": "The page name or one formula per screen, as SVG cross-stitch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings in Fraunces Soft."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-headings, page-head statement lines, FAQ questions."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The one sentence under a heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 64-68ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Captions, fact terms and notes, in sentence case."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Every state transition and press."
+      },
+      {
+        "name": "stitch-in",
+        "value": "420ms ease-out, staggered 2-10ms per stitch",
+        "purpose": "Top-of-page stitched lettering sewing in."
+      },
+      {
+        "name": "sew",
+        "value": "1100ms cubic-bezier(0.45, 0, 0.25, 1), 200ms delay",
+        "purpose": "The opening loom trace drawn along an SVG mask."
+      },
+      {
+        "name": "press",
+        "value": "scale(0.97), 160ms",
+        "purpose": "Button press feedback."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone-header",
+        "value": "520px"
+      },
+      {
+        "name": "patches",
+        "value": "760px"
+      },
+      {
+        "name": "nav",
+        "value": "860px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action on dark cloth.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Join the waitlist</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;min-height:54px;padding:0 28px;background:#F2B705;color:#0E3A25;font:800 17px \"Nunito Variable\",Nunito,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms}.ds-btn:hover{background:#FFC92E}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #F2B705;outline-offset:3px}"
+    },
+    {
+      "name": "Forest Button",
+      "kind": "button",
+      "refersTo": "button-forest",
+      "description": "The action on saffron cloth.",
+      "html": "<a class=\"ds-btn-forest\" href=\"#\">Open the contact form</a>",
+      "css": ".ds-btn-forest{display:inline-flex;align-items:center;min-height:54px;padding:0 28px;background:#0E3A25;color:#F6EBD3;font:800 17px \"Nunito Variable\",Nunito,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms}.ds-btn-forest:hover{background:#134A30}.ds-btn-forest:active{transform:scale(.97)}.ds-btn-forest:focus-visible{outline:3px solid #F2B705;outline-offset:3px}"
+    },
+    {
+      "name": "Trace Button",
+      "kind": "button",
+      "refersTo": "button-trace",
+      "description": "The action on the Weave page, like the game Start button.",
+      "html": "<a class=\"ds-btn-trace\" href=\"#\">Join the waitlist</a>",
+      "css": ".ds-btn-trace{display:inline-flex;align-items:center;min-height:54px;padding:0 28px;background:#C83A1E;color:#FCF5EB;font:800 17px \"Nunito Variable\",Nunito,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms}.ds-btn-trace:hover{background:#A93018}.ds-btn-trace:active{transform:scale(.97)}.ds-btn-trace:focus-visible{outline:3px solid #F2B8A1;outline-offset:3px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Wordmark, four links, current page dashed-underlined.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\">ThreadBind Studios</a><a href=\"#\" aria-current=\"page\">Weave</a><a href=\"#\">Studio</a><a href=\"#\">Press</a><a href=\"#\">Support</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;align-items:center;padding:22px 32px;background:#0E3A25;color:#F6EBD3;font:700 18px \"Nunito Variable\",Nunito,system-ui,sans-serif}.ds-nav a{color:inherit;text-decoration:none}.ds-nav .ds-brand{font-weight:800;margin-right:auto}.ds-nav a:hover,.ds-nav a[aria-current]{color:#F2B705;text-decoration:underline dashed 2px;text-underline-offset:8px}.ds-nav a:focus-visible{outline:3px solid #F2B705;outline-offset:3px}"
+    },
+    {
+      "name": "Cloth Section",
+      "kind": "card",
+      "description": "A full-bleed section of aida cloth with its hole grid.",
+      "html": "<section class=\"ds-cloth\"><h2>Bends are the whole trick.</h2><p>Mult is the word length plus one for every 90 degree turn.</p></section>",
+      "css": ".ds-cloth{padding:64px 40px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9'%3E%3Ccircle cx='4.5' cy='4.5' r='1.25' fill='%23462800' fill-opacity='.2'/%3E%3C/svg%3E\") 0 0/9px 9px,#F2B705;color:#0E3A25;font:500 18px/1.55 \"Nunito Variable\",Nunito,system-ui,sans-serif}.ds-cloth h2{margin:0 0 12px;font:800 40px/1.02 \"Fraunces Soft\",Georgia,serif}"
+    },
+    {
+      "name": "Cozy Loom Tile",
+      "kind": "custom",
+      "refersTo": "loom-tile-cozy",
+      "description": "A letter tile from the Weave loom; traced tiles turn salmon.",
+      "html": "<span class=\"ds-tile\">T<small>2</small></span><span class=\"ds-tile is-traced\">H<small>3</small></span>",
+      "css": ".ds-tile{position:relative;display:inline-grid;place-items:center;width:56px;height:56px;margin:2px;background:#F9EBD7;color:#023019;border:2px solid #E0D4C2;border-radius:8px;font:800 28px \"Fraunces Soft\",Georgia,serif}.ds-tile small{position:absolute;right:5px;bottom:2px;font:800 11px \"Nunito Variable\",Nunito,system-ui,sans-serif;color:#046A38}.ds-tile.is-traced{background:#F2B8A1;color:#F9EBD7}.ds-tile.is-traced small{color:#023019}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Studio Sampler",
+    "overview": "",
+    "keyCharacteristics": [
+      "Whole-section cloths with a visible hole grid; colour changes happen at section edges.",
+      "Stitched 5×7 display lettering; Fraunces Soft headings; Nunito text.",
+      "A live loom as the signature: traced cells fill with stitches, the trace is a dashed backstitch.",
+      "Flat surfaces, no shadows at rest, square buttons.",
+      "One authored motion: top-of-page stitching sews in; the opening trace sews itself and the score counts up."
+    ],
+    "rules": [
+      {
+        "name": "The Whole Cloth Rule",
+        "body": "A colour that isn't text owns a whole section edge to edge. If a colour would appear as a small accent tile on another cloth, it's the wrong colour.\r",
+        "section": "colors"
+      },
+      {
+        "name": "The Cozy Page Rule",
+        "body": "Anything inside `html[data-cloth='cozy']` (the Weave page) uses only Cozy tokens, including the header button, nav accent and footer. Saffron and oxblood never appear there.\r",
+        "section": "colors"
+      },
+      {
+        "name": "The Large Vermilion Rule",
+        "body": "Vermilion (#E8452A / #E34222) on forest falls below 3:1 at text sizes, so it only sets stitched display type or fills. Headings on Cozy forest use salmon instead.\r",
+        "section": "colors"
+      },
+      {
+        "name": "The Stitched Heading Rule",
+        "body": "Stitched lettering is always either the `<h1>`, with the real title in visually hidden text, or `aria-hidden` decoration beside a real heading. It is never the only copy of meaningful text.\r",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Faces Rule",
+        "body": "Fraunces Soft and Nunito are the only typefaces. Fraunces appears outside headings only inside game-UI fragments, such as loom tiles.\r",
+        "section": "typography"
+      },
+      {
+        "name": "The Fabric Not Shadow Rule",
+        "body": "Separate surfaces by changing cloth or tone (forest to forest-deep), never with box-shadow or a hairline border. The cookie banner is the single exception, because it floats over the page.\r",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** give every new section a whole cloth from the palette, with the hole-grid texture.",
+      "**Do** set a new page's `<h1>` as stitched lettering with the real title in visually hidden text, and pair it with a Fraunces statement line.",
+      "**Do** use Weave's own screens and the live loom as the page's pictures; caption them as in-development renders.",
+      "**Do** keep vermilion to display stitching and fills; use cream, sage or rose floss for text on dark cloth.",
+      "**Do** honour `prefers-reduced-motion`: all sewing, count-ups and pending threads stop."
+    ],
+    "donts": [
+      "**Don't** add shadows, gradients, glass or hairline borders to separate surfaces; change the cloth instead.",
+      "**Don't** add a third typeface, tracked uppercase labels, or a small label above a heading.",
+      "**Don't** round buttons or cloths; rounding belongs to game UI fragments only.",
+      "**Don't** use saffron or oxblood on the Weave page.",
+      "**Don't** animate section entrances; the one motion is stitching at the top of the page and the loom's opening trace."
+    ]
+  }
+}

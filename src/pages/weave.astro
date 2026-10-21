@@ -1,0 +1,158 @@
+---
+// Weave's page: the stitched sampler, re-clothed in the game's Cozy theme
+// (forest cloth, vermilion trace, parchment, salmon).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Stitched from '../components/Stitched.astro';
+import Loom from '../components/Loom.astro';
+import Screen from '../components/Screen.astro';
+import RunPatches from '../components/RunPatches.astro';
+import { site } from '../site.config';
+import { screens } from '../data/weave';
+import { Image } from 'astro:assets';
+import icon from '../assets/weave-icon.png';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Weave',
+  description: 'A roguelike word game. Trace words through a grid of letters; every bend multiplies the score.',
+  genre: ['Word game', 'Roguelike', 'Puzzle'],
+  gamePlatform: ['iOS', 'Android'],
+  url: `${site.url}/weave/`,
+  publisher: { '@type': 'Organization', name: site.name, url: site.url },
+};
+---
+<BaseLayout
+  title="Weave | A roguelike word game by ThreadBind Studios"
+  description="Trace words through a grid of letters. Every 90° bend adds to your multiplier. Beat eight rising targets or the run unravels. Weave is coming to iOS and Android; join the waitlist."
+  image="/og/weave.png"
+  imageAlt="WEAVE stitched in parchment cross-stitch on forest green, over the line: A roguelike word game."
+  cloth="cozy"
+  jsonLd={jsonLd}
+  heroCta
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>
+        <Stitched text="Weave" class="hero-title stitched--sew" decorative />
+        <span class="visually-hidden">Weave, a roguelike word game</span>
+      </h1>
+      <p class="motto">Trace words. Bend the thread. Beat the target.</p>
+      <p class="hero-lede">A roguelike word game for iOS and Android, where every turn your thread takes adds to the multiplier.</p>
+      <div class="btn-row">
+        <a class="btn btn--trace" href={site.forms.waitlist} target="_blank" rel="noopener" data-external-form>Join the waitlist</a>
+        <a class="link-strong nowrap" href="#run">How a run works</a>
+      </div>
+    </div>
+    <Loom class="hero-loom" cloth="parchment" />
+  </section>
+
+  <section class="cloth cloth--parchment scoring">
+    <div class="wrap split">
+      <div>
+        <h2 class="h-section">Bends are the whole trick.</h2>
+        <p class="lead">A word's base is the sum of its letters. Its mult is its length, plus one for every 90° turn the trace takes.</p>
+        <p class="measure">THREAD has six letters and two bends, so it scores 11 × 8 = 88. Lay the same letters out in a straight line and they earn 66. Finding the twisty path for a word you already know is the skill Weave is built on.</p>
+      </div>
+      <figure class="formula">
+        <Stitched text="11×8=88" label="11 times 8 equals 88" />
+        <figcaption><span class="f-base">base</span><span class="f-mult">mult</span><span class="f-score">score</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="cloth cloth--cozy-700 run" id="run">
+    <div class="wrap run-grid">
+      <div>
+        <h2 class="h-section">Eight weaves make a tapestry.</h2>
+        <p class="lead">Each weave gives you six picks to reach its target. Miss one and the run unravels. Clear all eight and it's finished.</p>
+        <p class="measure">Between weaves you see what's coming, then the shop opens: modifiers that add base, add mult, or multiply it. Pick well and the numbers start to run away from the targets.</p>
+        <RunPatches palette="cozy" />
+      </div>
+      <Screen src={screens.runTrack.src} alt={screens.runTrack.alt} class="run-shot" />
+    </div>
+  </section>
+
+  <section class="cloth cloth--cozy-800 screens">
+    <div class="wrap">
+      <div class="screens-head">
+        <h2 class="h-section">From the current build</h2>
+        <p class="measure">Weave is in development. These are renders of its Cozy theme as it stands today.</p>
+      </div>
+      <div class="screens-row">
+        <Screen src={screens.title.src} alt={screens.title.alt} caption="The title screen" sizes="(max-width: 760px) 44vw, 300px" />
+        <Screen src={screens.loom.src} alt={screens.loom.alt} caption="A weave in play" sizes="(max-width: 760px) 44vw, 300px" />
+        <Screen src={screens.shop.src} alt={screens.shop.alt} caption="The shop between weaves" sizes="(max-width: 760px) 44vw, 300px" />
+        <Screen src={screens.scorecard.src} alt={screens.scorecard.alt} caption="A finished tapestry" sizes="(max-width: 760px) 44vw, 300px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--parchment close">
+    <div class="wrap split">
+      <div>
+        <h2 class="h-section">Be first to play Weave.</h2>
+        <p class="lead">Leave your email on the waitlist and we'll write when there's a build you can play. We use it for nothing else.</p>
+        <div class="btn-row">
+          <a class="btn btn--trace" href={site.forms.waitlist} target="_blank" rel="noopener" data-external-form>Join the waitlist</a>
+          <a class="link-strong" href={site.forms.feedback} target="_blank" rel="noopener">Played a build? Send feedback</a>
+        </div>
+      </div>
+      <div class="ticket">
+        <Image src={icon} alt="The Weave app icon: WEAVE traced through a 3×3 letter grid on saffron." width={220} height={220} class="ticket-icon" />
+        <p><strong>Weave</strong><br />A roguelike word game<br />iOS and Android · in development</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding: clamp(16px, 3vw, 40px) var(--gutter) clamp(72px, 9vw, 120px); max-width: 1440px; margin-inline: auto; }
+  .hero h1 { color: var(--cozy-trace); }
+  .hero-title { width: 100%; height: auto; --step: 9ms; }
+  .motto { font-family: var(--font-face); font-size: clamp(1.6rem, 2.7vw, 2.4rem); line-height: 1.12; margin: clamp(20px, 3vw, 36px) 0 16px; color: var(--cozy-parchment); }
+  .hero-lede { max-width: 44ch; margin-bottom: 32px; color: var(--cozy-dim); }
+  .hero-loom { width: 100%; max-width: max(400px, calc(100vh - 260px)); justify-self: end; }
+
+  .split { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .scoring .lead, .run .lead, .close .lead { margin: 20px 0 16px; }
+  .scoring .measure { font-weight: 600; }
+  .formula { margin: 0; color: var(--cozy-trace-deep); }
+  .formula :global(svg) { width: 100%; height: auto; }
+  /* Labels sit under their numbers: 39 stitch columns, "11" 0-10, "8" 16-20, "88" 27-38. */
+  .formula figcaption { position: relative; height: 1.6em; margin-top: 14px; font-weight: 800; color: var(--cozy-900); }
+  .formula figcaption span { position: absolute; text-align: center; }
+  .f-base { left: 0; width: 28%; }
+  .f-mult { left: 36%; width: 22%; }
+  .f-score { left: 69%; width: 31%; }
+
+  .run-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 3fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .run .measure { margin-bottom: 48px; color: var(--cozy-dim); }
+
+  .screens-head { display: flex; justify-content: space-between; align-items: end; gap: 24px 48px; flex-wrap: wrap; margin-bottom: 48px; }
+  .screens-head .measure { color: var(--cozy-dim); }
+  .screens-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); }
+
+  .close .lead { max-width: 40ch; margin-bottom: 32px; }
+  .close .link-strong { color: var(--cozy-900); }
+  .ticket { display: flex; align-items: center; gap: 28px; justify-self: end; padding: 28px; background: var(--holes), var(--cozy-900); color: var(--cozy-parchment); }
+  .ticket :global(.ticket-icon) { width: clamp(120px, 14vw, 200px); height: auto; }
+  .ticket p { font-size: 17px; }
+  .ticket strong { font-family: var(--font-face); font-weight: 400; font-size: 28px; color: var(--cozy-selected); }
+
+  /* Phones: the whole loom and its tally fit in the first screen under the pitch. */
+  @media (max-width: 860px) {
+    .hero { gap: 22px; padding-top: 4px; }
+    .motto { font-size: 1.4rem; margin: 14px 0 8px; }
+    .hero-lede { font-size: 16.5px; margin-bottom: 16px; }
+    .hero .btn-row { gap: 12px 20px; }
+    .hero .btn { padding: 0 20px; min-height: 48px; }
+  }
+  @media (max-width: 900px) {
+    .hero, .split, .run-grid { grid-template-columns: 1fr; }
+    .hero-loom { justify-self: stretch; max-width: none; }
+    .run-shot { max-width: 300px; }
+    .screens-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ticket { justify-self: stretch; }
+  }
+</style>

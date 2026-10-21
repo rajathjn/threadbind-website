@@ -1,0 +1,133 @@
+---
+// The studio's home: who ThreadBind is, with Weave as its first game.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Stitched from '../components/Stitched.astro';
+import StitchedMark from '../components/StitchedMark.astro';
+import Screen from '../components/Screen.astro';
+import { site } from '../site.config';
+import { screens } from '../data/weave';
+
+const principles = [
+  { title: 'The mechanic is the point.', text: 'We tune scoring curves, modifiers and pouches by hand until a good move feels good. In Weave, the shape of your trace is worth as much as the word.' },
+  { title: 'Words are for playing with.', text: 'Long words, odd words, words you half remember. A game about language should reward curiosity, not a memorised list.' },
+  { title: 'Easy to start, deep to stay.', text: 'Drag a finger, spell a word. Underneath, multipliers compound and every run asks for a different plan.' },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/icon-512.png`,
+  email: site.email,
+};
+---
+<BaseLayout
+  title="ThreadBind Studios | An independent game studio"
+  description="ThreadBind Studios is a small, independent game studio making games about words. Our first game is Weave, a roguelike word game for iOS and Android."
+  jsonLd={jsonLd}
+  heroCta
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>
+        <Stitched text="ThreadBind" class="hero-title stitched--sew" decorative />
+        <Stitched text="Studios" class="hero-sub stitched--sew" decorative />
+        <span class="visually-hidden">ThreadBind Studios</span>
+      </h1>
+      <p class="motto">An independent studio making games about words.</p>
+      <p class="hero-lede">We're small, we work remotely, and we're building our first game: Weave, a roguelike word game where the shape of your word scores.</p>
+      <div class="btn-row">
+        <a class="btn" href={site.forms.waitlist} target="_blank" rel="noopener" data-external-form>Join the Weave waitlist</a>
+        <a class="link-strong nowrap" href="/weave/">Meet Weave</a>
+      </div>
+    </div>
+    <StitchedMark class="hero-mark stitched--sew" />
+  </section>
+
+  <section class="cloth cloth--oxblood game">
+    <div class="wrap split">
+      <div>
+        <Stitched text="Weave" class="game-title" decorative />
+        <h2 class="h-section">Our first game is Weave.</h2>
+        <p class="lead">Trace words through a grid of letters. Every 90° bend multiplies the score. Beat eight rising targets, or the run unravels.</p>
+        <p class="measure">It's a roguelike word game for iOS and Android, in development now. You can play a real loom from it on its page.</p>
+        <div class="btn-row">
+          <a class="btn" href="/weave/">Meet Weave</a>
+          <a class="link-strong" href={site.forms.waitlist} target="_blank" rel="noopener">Join the waitlist</a>
+        </div>
+      </div>
+      <div class="game-shots">
+        <Screen src={screens.title.src} alt={screens.title.alt} caption="The title screen" sizes="(max-width: 900px) 44vw, 260px" />
+        <Screen src={screens.loom.src} alt={screens.loom.alt} caption="A weave in play" sizes="(max-width: 900px) 44vw, 260px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--saffron why">
+    <div class="wrap split">
+      <h2 class="h-section">Why weaving</h2>
+      <div>
+        <p class="lead">A loom turns straight threads into a pattern that holds together. We like games that work the same way: a few plain rules that, crossed the right way, make something with real depth.</p>
+        <p class="measure">That's where the name comes from, and why Weave's words are traced through a grid. The lattice in our mark is a basket weave, one of the oldest patterns a loom makes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--deep principles">
+    <div class="wrap">
+      <h2 class="h-section">How we work</h2>
+      <ol class="rows">
+        {principles.map((p) => (
+          <li>
+            <h3 class="h-small">{p.title}</h3>
+            <p>{p.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="cloth cloth--forest hello">
+    <div class="wrap split">
+      <div>
+        <h2 class="h-section">Say hello.</h2>
+        <p class="lead">Questions, press, or a word game you think we should play? We read everything.</p>
+      </div>
+      <div class="btn-row hello-actions">
+        <a class="btn" href={site.forms.contact} target="_blank" rel="noopener" data-external-form>Contact us</a>
+        <a class="link-strong" href="/press/">Press kit</a>
+        <a class="link-strong" href="/about/">About the studio</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding: clamp(16px, 3vw, 40px) var(--gutter) clamp(72px, 9vw, 120px); max-width: 1440px; margin-inline: auto; }
+  .hero h1 { display: grid; gap: clamp(10px, 1.4vw, 18px); color: var(--floss); }
+  .hero-title { width: 100%; height: auto; --step: 5ms; }
+  /* "Studios" is 41 stitch columns to "ThreadBind"'s 59; 0.62 of the stitch size sits it under as a byline. */
+  .hero :global(.hero-sub) { width: calc(100% * 41 / 59 * 0.62); height: auto; color: var(--saffron); --step: 6ms; }
+  .motto { font-family: var(--font-face); font-size: clamp(1.6rem, 2.7vw, 2.4rem); line-height: 1.12; margin: clamp(24px, 3.4vw, 44px) 0 16px; }
+  .hero-lede { max-width: 46ch; margin-bottom: 32px; color: var(--floss-dim); }
+  .hero :global(.hero-mark) { width: 100%; max-width: 560px; height: auto; justify-self: end; color: var(--floss); --step: 2ms; }
+
+  .split { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .game :global(.game-title) { width: min(60%, 320px); height: auto; color: var(--vermilion); margin-bottom: 28px; }
+  .game .lead, .why .lead, .hello .lead { margin: 20px 0 16px; }
+  .game .measure { margin-bottom: 32px; color: var(--rose); }
+  .game-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .why .split { align-items: start; }
+  .why .lead { margin-top: 0; }
+  .why .measure { font-weight: 600; }
+  .rows { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
+  .rows h3 { color: var(--saffron); margin-bottom: 12px; }
+  .rows p { color: var(--floss-dim); }
+  .hello-actions { justify-self: end; }
+
+  @media (max-width: 900px) {
+    .hero, .split, .rows { grid-template-columns: 1fr; }
+    .hero :global(.hero-mark) { justify-self: center; max-width: 360px; }
+    .hello-actions { justify-self: start; }
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+// The top of a reading page. The stitched word is the heading (its full title is read out);
+// beside it, one line in Fraunces says what the page is for, then the lede.
+import Stitched from './Stitched.astro';
+interface Props { stitch: string; title: string; line: string; lede?: string; }
+const { stitch, title, line, lede } = Astro.props;
+---
+<header class="page-head">
+  <div class="wrap head-grid">
+    <h1>
+      <Stitched text={stitch} class="page-stitch stitched--sew" decorative />
+      <span class="visually-hidden">{title}</span>
+    </h1>
+    <div class="head-copy">
+      <p class="line">{line}</p>
+      {lede && <p class="lead">{lede}</p>}
+      <slot />
+    </div>
+  </div>
+</header>
+
+<style>
+  .page-head { padding: clamp(16px, 3vw, 40px) var(--gutter) clamp(64px, 8vw, 104px); }
+  .head-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 6vw, 96px); align-items: center; }
+  h1 { color: var(--vermilion); }
+  .page-head :global(.page-stitch) { width: 100%; height: auto; --step: 6ms; }
+  /* A statement, not a second headline: Fraunces at statement size. */
+  .line { font-family: var(--font-face); font-size: clamp(1.5rem, 2.5vw, 2.2rem); line-height: 1.15; max-width: 26ch; }
+  .lead { margin-top: 20px; max-width: 52ch; color: var(--floss-dim); }
+  @media (max-width: 900px) {
+    .head-grid { grid-template-columns: 1fr; }
+    h1 { max-width: 520px; }
+  }
+</style>

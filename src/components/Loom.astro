@@ -1,0 +1,119 @@
+---
+// A playable Weave loom (rules in src/scripts/loom.js), stitched into cloth on a scroll frame.
+// `cloth` picks the fabric: oxblood in the studio colours, parchment for Weave's Cozy page.
+interface Props { cloth?: 'oxblood' | 'parchment'; class?: string; }
+const { cloth = 'oxblood', class: className } = Astro.props;
+---
+<div class:list={['loom', 'loom--sampler', `loom--${cloth}`, className]} data-loom data-ui>
+  <div class="roller" aria-hidden="true">
+      <svg class="knob" viewBox="0 0 20 32"><rect x="2" y="1" width="16" height="30" rx="5" fill="#7E5026"/><rect x="5" y="4" width="4" height="24" rx="2" fill="#A8723D"/></svg>
+      <svg class="rod" viewBox="0 0 100 20" preserveAspectRatio="none"><rect width="100" height="20" fill="#B9844C"/><rect y="2" width="100" height="4" fill="#DDAA6E"/><rect y="9" width="100" height="1.2" fill="#9A6535"/><rect y="13" width="100" height="1" fill="#9A6535"/><rect y="16" width="100" height="4" fill="#87562B"/></svg>
+      <svg class="knob" viewBox="0 0 20 32"><rect x="2" y="1" width="16" height="30" rx="5" fill="#7E5026"/><rect x="5" y="4" width="4" height="24" rx="2" fill="#A8723D"/></svg>
+    </div>
+  <div class="loom-board">
+    <svg class="loom-path" aria-hidden="true"></svg>
+    <div class="loom-grid" role="group" aria-label="Playable Weave loom. Drag across neighbouring letters, or tap them one by one, to spell a word. Arrow keys and Enter also work."></div>
+  </div>
+  <p class="loom-tally num"><span data-out="word">THREAD</span> <span><span data-out="base">11</span> × <span data-out="mult">8</span> = <b data-out="score">88</b></span></p>
+  <p class="loom-status" data-out="status">Your turn: drag a word.</p>
+  <div class="loom-foot">
+    <ol class="loom-found num" data-out="found" aria-label="Words you've scored"></ol>
+    <p class="loom-total num">Total <b data-out="total">88</b> · <button type="button" data-act="clear">Clear</button></p>
+  </div>
+  <p class="visually-hidden" data-out="announce" aria-live="polite"></p>
+  <div class="roller" aria-hidden="true">
+      <svg class="knob" viewBox="0 0 20 32"><rect x="2" y="1" width="16" height="30" rx="5" fill="#7E5026"/><rect x="5" y="4" width="4" height="24" rx="2" fill="#A8723D"/></svg>
+      <svg class="rod" viewBox="0 0 100 20" preserveAspectRatio="none"><rect width="100" height="20" fill="#B9844C"/><rect y="2" width="100" height="4" fill="#DDAA6E"/><rect y="9" width="100" height="1.2" fill="#9A6535"/><rect y="13" width="100" height="1" fill="#9A6535"/><rect y="16" width="100" height="4" fill="#87562B"/></svg>
+      <svg class="knob" viewBox="0 0 20 32"><rect x="2" y="1" width="16" height="30" rx="5" fill="#7E5026"/><rect x="5" y="4" width="4" height="24" rx="2" fill="#A8723D"/></svg>
+    </div>
+  <noscript><p class="loom-status">The loom needs JavaScript to play. THREAD, traced above with two bends, scores 11 × 8 = 88.</p></noscript>
+</div>
+
+<script>
+  import { mountAllLooms } from '../scripts/loom.js';
+  mountAllLooms();
+</script>
+
+<style is:global>
+  /* Letters scale with the board, not the window: a cell is a sixth of the board's width. */
+  .loom-board { position: relative; z-index: 0; container-type: inline-size; }
+  .loom { --cell-font: 7cqw; }
+  .loom-path { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+  .loom-path .trace, .loom-path .trace-casing { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  /* The opening trace sews itself in once: a mask path draws along it. */
+  .loom-path .trace-sew { fill: none; stroke: #fff; stroke-width: 64px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: sew 1100ms cubic-bezier(0.45, 0, 0.25, 1) 200ms forwards; }
+  @keyframes sew { to { stroke-dashoffset: 0; } }
+  .loom-grid { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 6), 1fr); touch-action: none; user-select: none; -webkit-user-select: none; }
+  .loom .cell { position: relative; aspect-ratio: 1; display: grid; place-items: center; border: 0; padding: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .loom .cell::before { content: ''; position: absolute; z-index: 0; }
+  .loom .cell-letter { position: relative; z-index: 2; font-family: var(--font-face); font-size: var(--cell-font); line-height: 1; }
+  .loom .cell-value { position: absolute; z-index: 2; right: 10%; bottom: 6%; font-size: clamp(10px, 2.2cqw, 14px); font-weight: 800; font-family: var(--font-text); }
+  .loom .cell.is-hole { cursor: default; }
+  .loom .cell:focus-visible { outline: 3px solid var(--saffron); outline-offset: -3px; z-index: 3; }
+  .loom-status { min-height: 1.5em; margin-top: 8px; font-size: 15px; }
+  .loom-status[data-tone="warn"] { color: var(--rose); }
+  .loom-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 10px; font-size: 15px; }
+  .loom-found { display: flex; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin: 0; padding: 0; }
+  .loom-found li { display: flex; gap: 6px; }
+  .loom-found .found-word { font-weight: 800; letter-spacing: 0.04em; }
+  .loom-found .found-bends { display: none; }
+  .loom-found .found-score { opacity: 0.8; }
+  .loom-total { white-space: nowrap; }
+  .loom-total button { border: 0; background: none; padding: 4px 2px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .loom.just-missed .loom-board { animation: loom-shake 320ms var(--ease); }
+  @keyframes loom-shake { 25% { transform: translateX(-5px); } 60% { transform: translateX(4px); } }
+
+  /* Sampler: an oxblood hoop; traced cells fill with stitches, the trace is backstitch. */
+  /* The cloth is stretched on a scroll frame: wooden rollers top and bottom, wider than the cloth. */
+  .loom--sampler { --pad: clamp(16px, 2.4vw, 32px); background: var(--holes), var(--oxblood); padding: 0 var(--pad); color: var(--floss); }
+  .roller { display: flex; align-items: center; height: clamp(18px, 2vw, 24px); margin-inline: calc(-1 * var(--pad) - clamp(8px, 1.2vw, 16px)); }
+  .roller .rod { flex: 1; height: 100%; display: block; }
+  .roller .knob { flex: none; width: auto; height: 140%; display: block; }
+  .roller:first-child { margin-bottom: var(--pad); transform: translateY(-50%); }
+  .roller:last-of-type { margin-top: calc(var(--pad) * 0.6); transform: translateY(50%); }
+  .loom--sampler .trace { stroke: var(--floss); stroke-width: 5px; stroke-dasharray: 14 7; }
+  .loom--sampler .trace-casing { display: none; }
+  .loom--sampler .cell::before { inset: 14%; background: var(--holes-light), var(--saffron); opacity: 0; transform: scale(0.6); transition: opacity 160ms var(--ease), transform 220ms var(--ease); }
+  .loom--sampler .cell.is-traced::before { opacity: 1; transform: none; }
+  .loom--sampler .cell.is-bend::before { background: var(--holes), var(--vermilion); }
+  .loom--sampler .cell-letter { color: var(--floss); }
+  .loom--sampler .cell:hover .cell-letter { color: var(--saffron); }
+  .loom--sampler .cell.is-traced .cell-letter, .loom--sampler .cell.is-traced .cell-value { color: var(--forest); }
+  .loom--sampler .cell.is-bend .cell-letter, .loom--sampler .cell.is-bend .cell-value { color: var(--floss); }
+  .loom--sampler .cell-value { color: var(--rose); }
+  .loom--sampler .loom-tally { display: flex; justify-content: space-between; gap: 16px; margin-top: 18px; font-family: var(--font-face); font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: 0.04em; }
+  .loom--sampler .loom-tally b { color: var(--saffron); font-weight: inherit; }
+  .loom--sampler .loom-status { color: var(--rose); }
+  .loom--sampler .loom-status[data-tone="ok"] { color: var(--floss); }
+  .loom--sampler.is-fresh .cell.is-traced::before { animation: stitch-fill 420ms var(--ease) both; }
+  .loom--sampler.is-fresh .cell.is-traced:nth-child(3)::before { animation-delay: 90ms; }
+  .loom--sampler.is-fresh .cell.is-traced:nth-child(4)::before { animation-delay: 180ms; }
+  .loom--sampler.is-fresh .cell.is-traced:nth-child(10)::before { animation-delay: 270ms; }
+  .loom--sampler.is-fresh .cell.is-traced:nth-child(16)::before { animation-delay: 360ms; }
+  .loom--sampler.is-fresh .cell.is-traced:nth-child(17)::before { animation-delay: 450ms; }
+  @keyframes stitch-fill { from { opacity: 0; transform: scale(0.4); } }
+
+  /* Sampler on parchment, for Weave's Cozy page: salmon fills, vermilion bends and backstitch. */
+  .loom--sampler.loom--parchment { background: var(--holes-light), var(--cozy-parchment); color: var(--cozy-900); }
+  .loom--parchment .trace { stroke: var(--cozy-trace-deep); }
+  .loom--parchment .cell::before { background: var(--holes-light), var(--cozy-selected); }
+  .loom--parchment .cell.is-bend::before { background: var(--holes), var(--cozy-trace); }
+  .loom--parchment .cell-letter { color: var(--cozy-900); }
+  .loom--parchment .cell:hover .cell-letter { color: var(--cozy-trace-deep); }
+  .loom--parchment .cell-value { color: var(--cozy-500); }
+  .loom--parchment .cell.is-traced .cell-letter, .loom--parchment .cell.is-traced .cell-value { color: var(--cozy-900); }
+  .loom--parchment .cell.is-bend .cell-letter, .loom--parchment .cell.is-bend .cell-value { color: var(--cozy-paper); }
+  .loom--parchment .loom-tally b { color: var(--cozy-trace-deep); }
+  .loom--sampler.loom--parchment .loom-status, .loom--sampler.loom--parchment .loom-status[data-tone="ok"] { color: var(--cozy-500); }
+  .loom--sampler.loom--parchment .loom-status[data-tone="warn"] { color: var(--cozy-trace-deep); }
+  .loom--parchment .loom-total button { color: var(--cozy-900); }
+  .loom--parchment :focus-visible { outline-color: var(--cozy-trace-deep); }
+
+  .loom.just-scored .loom-score, .loom.just-scored .loom-tally b { display: inline-block; animation: score-pop 380ms var(--ease); }
+  @keyframes score-pop { from { transform: scale(1.3); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loom-path .trace-sew { animation: none; stroke-dashoffset: 0; }
+    .loom--sampler.is-fresh .cell.is-traced::before, .loom.just-scored .loom-score, .loom.just-scored .loom-tally b, .loom.just-missed .loom-board { animation: none; stroke-dashoffset: 0; }
+  }
+</style>

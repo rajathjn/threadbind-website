@@ -1,0 +1,10 @@
+---
+// The ThreadBind lattice worked in half-stitches (geometry in src/lib/stitch.mjs).
+import { stitchLattice } from '../lib/stitch.mjs';
+interface Props { class?: string; color?: string; }
+const { class: className, color = 'currentColor' } = Astro.props;
+const { stitches, width, height, strokeWidth } = stitchLattice();
+---
+<svg class:list={['stitched', className]} viewBox={`-2 -2 ${width + 4} ${height + 4}`} aria-hidden="true" fill="none" stroke={color} stroke-width={strokeWidth} stroke-linecap="round">
+  {stitches.map((strokes, i) => <g style={`--i:${i}`}>{strokes.map((d) => <path d={d} />)}</g>)}
+</svg>

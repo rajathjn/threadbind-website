@@ -1,0 +1,40 @@
+---
+// Open Graph card source. tools/og.mjs copies this into src/pages while it captures, then removes it.
+import '../../styles/global.css';
+import Stitched from '../../components/Stitched.astro';
+import StitchedMark from '../../components/StitchedMark.astro';
+export function getStaticPaths() { return [{ params: { name: 'default' } }, { params: { name: 'weave' } }]; }
+const { name } = Astro.params;
+---
+<html lang="en"><head><meta charset="utf-8" /><meta name="robots" content="noindex" /></head>
+<body class:list={['card', `card--${name}`]}>
+  {name === 'weave' ? (
+    <div class="weave">
+      <Stitched text="Weave" class="w-title" decorative />
+      <p class="w-kind">A roguelike word game</p>
+      <p class="w-line">Trace words. Bend the thread. Beat the target.</p>
+    </div>
+  ) : (
+    <div class="studio">
+      <StitchedMark class="s-mark" />
+      <div>
+        <Stitched text="ThreadBind" class="s-title" decorative />
+        <p class="s-line">An independent game studio, making Weave.</p>
+      </div>
+    </div>
+  )}
+</body></html>
+<style is:global>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  .card { display: grid; place-items: center; }
+  .card--default { background: var(--holes), var(--forest); }
+  .card--weave { background: var(--holes), var(--cozy-900); }
+  .studio { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; padding: 0 80px; }
+  .s-mark { width: 300px; height: auto; color: var(--saffron); }
+  .s-title { width: 640px; height: auto; color: var(--floss); }
+  .s-line { margin-top: 28px; font-family: var(--font-face); font-size: 38px; color: var(--saffron); }
+  .weave { text-align: center; }
+  .w-title { width: 860px; height: auto; color: var(--cozy-parchment); margin: 0 auto; }
+  .w-kind { margin-top: 36px; font-family: var(--font-face); font-size: 52px; color: var(--cozy-trace); }
+  .w-line { margin-top: 10px; font-family: var(--font-text); font-weight: 700; font-size: 30px; color: var(--cozy-dim); }
+</style>

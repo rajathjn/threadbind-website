@@ -1,0 +1,37 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../site.config';
+---
+<LegalLayout
+  title="Content policy | Streaming and fan work for Weave"
+  description="You can stream, record and monetise Weave gameplay, and make fan art. Here is what is welcome, what to avoid, and how to ask for a press or creator key."
+  stitch="Share"
+  heading="Content policy"
+  line="Stream it, record it, make things with it."
+  updated="21 October 2026"
+>
+  <p>We'd love to see what you make with Weave. Here's what's welcome and the few things to avoid.</p>
+
+  <h2>Streams and videos</h2>
+  <ul>
+    <li>Stream, record and share Weave on YouTube, Twitch, TikTok or anywhere else.</li>
+    <li>You can monetise those videos and streams.</li>
+    <li>A credit to ThreadBind Studios is appreciated but not required.</li>
+  </ul>
+
+  <h2>Fan art and fan work</h2>
+  <ul>
+    <li>Fan art, writing and other work inspired by Weave are welcome, and you can share or sell them.</li>
+    <li>Make it clear your work is unofficial, and don't use our logos in a way that suggests we made or endorse it.</li>
+  </ul>
+
+  <h2>Press and creator keys</h2>
+  <p>When builds are available we'll offer keys to press and creators. Ask through the <a href={site.forms.contact} target="_blank" rel="noopener">contact form</a> or at <a href={`mailto:${site.email}`}>{site.email}</a> with your outlet or channel, its audience and what you cover. The <a href="/press/">press kit</a> has screens and logos now.</p>
+
+  <h2>What's not OK</h2>
+  <ul>
+    <li>Using our work to make a competing product.</li>
+    <li>Sharing modified, leaked or pirated copies of the game.</li>
+    <li>Hateful, discriminatory or harmful content that uses Weave.</li>
+  </ul>
+</LegalLayout>

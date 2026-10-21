@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Screen from '../components/Screen.astro';
+import { site } from '../site.config';
+import { screens } from '../data/weave';
+
+const shots = [
+  { ...screens.title, file: '/press/weave-title.png', name: 'Title screen' },
+  { ...screens.loom, file: '/press/weave-loom.png', name: 'A weave in play' },
+  { ...screens.reveal, file: '/press/weave-reveal.png', name: 'Next weave reveal' },
+  { ...screens.shop, file: '/press/weave-shop.png', name: 'The shop' },
+  { ...screens.runTrack, file: '/press/weave-run_track.png', name: 'The run track' },
+  { ...screens.pouchPicker, file: '/press/weave-pouch_picker.png', name: 'Pouches' },
+  { ...screens.scorecard, file: '/press/weave-scorecard.png', name: 'Tapestry complete' },
+];
+// Each logo: a preview, then every file it comes in. Stitched art is made by tools/brand-assets.mjs.
+const logos = [
+  { name: 'ThreadBind Studios logo', note: 'Stitched lattice and wordmark, on forest', preview: '/press/threadbind-logo-stitched-2048.png', bg: 'var(--forest)', files: [['PNG 2048', '/press/threadbind-logo-stitched-2048.png'], ['SVG', '/press/threadbind-logo-stitched.svg']] },
+  { name: 'ThreadBind Studios logo, transparent', note: 'Oxblood, for light backgrounds', preview: '/press/threadbind-logo-stitched-transparent-2048.png', bg: 'var(--floss)', files: [['PNG 2048', '/press/threadbind-logo-stitched-transparent-2048.png'], ['SVG', '/press/threadbind-logo-stitched-transparent.svg']] },
+  { name: 'ThreadBind mark', note: 'The stitched lattice, on forest', preview: '/press/threadbind-mark-stitched-2048.png', bg: 'var(--forest)', files: [['PNG 2048', '/press/threadbind-mark-stitched-2048.png'], ['SVG', '/press/threadbind-mark-stitched.svg']] },
+  { name: 'ThreadBind mark, transparent', note: 'Oxblood, for light backgrounds', preview: '/press/threadbind-mark-stitched-transparent-2048.png', bg: 'var(--floss)', files: [['PNG 2048', '/press/threadbind-mark-stitched-transparent-2048.png'], ['SVG', '/press/threadbind-mark-stitched-transparent.svg']] },
+  { name: 'ThreadBind mark, small sizes', note: 'Solid bars for icons and favicons', preview: '/press/threadbind-lattice-saffron-on-forest-1024.png', bg: 'var(--forest)', files: [['PNG 1024', '/press/threadbind-lattice-saffron-on-forest-1024.png'], ['SVG', '/press/threadbind-lattice.svg']] },
+  { name: 'Weave app icon', note: 'The game icon', preview: '/press/weave-icon-1024.png', bg: 'var(--saffron)', files: [['PNG 1024', '/press/weave-icon-1024.png']] },
+];
+---
+<BaseLayout
+  title="Press kit | ThreadBind Studios and Weave"
+  description="Facts, descriptions, screenshots and logos for ThreadBind Studios and Weave, a roguelike word game in development for iOS and Android. Free to use in coverage."
+>
+  <PageHead stitch="Press" title="Press kit" line="Everything you need to write about Weave." lede="Facts, descriptions, screens and logos, free to use in coverage. For builds, interviews or anything missing, get in touch.">
+    <div class="btn-row head-actions">
+      <a class="btn" href={site.forms.contact} target="_blank" rel="noopener" data-external-form>Contact us</a>
+      <a class="link-strong" href={`mailto:${site.email}?subject=Weave%20press%20enquiry`}>{site.email}</a>
+    </div>
+  </PageHead>
+
+  <section class="cloth cloth--saffron facts-section">
+    <div class="wrap facts-grid">
+      <div>
+        <h2 class="h-section">Factsheet</h2>
+        <dl class="facts">
+          <div><dt>Developer</dt><dd>ThreadBind Studios</dd></div>
+          <div><dt>Based</dt><dd>Independent, remote</dd></div>
+          <div><dt>Founded</dt><dd>2026</dd></div>
+          <div><dt>Game</dt><dd>Weave</dd></div>
+          <div><dt>Genre</dt><dd>Roguelike word game</dd></div>
+          <div><dt>Platforms</dt><dd>iOS and Android</dd></div>
+          <div><dt>Status</dt><dd>In development</dd></div>
+          <div><dt>Release date</dt><dd>Not announced</dd></div>
+          <div><dt>Price</dt><dd>Not announced</dd></div>
+          <div><dt>Press contact</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+        </dl>
+      </div>
+      <div class="about-game">
+        <h2 class="h-section">About Weave</h2>
+        <p class="lead"><strong>Short:</strong> Weave is a roguelike word game where you trace words through a grid of letters and every bend in your path multiplies the score.</p>
+        <p><strong>Long:</strong> Players trace words up, down, left and right through a grid of letters called a loom. A word's base is the sum of its letter values; its multiplier is its length plus one for every 90° turn the trace takes, so a twisting path for a familiar word can outscore a rare one. A run is eight weaves with rising targets and six picks each. Miss a target and the run ends. Between weaves a shop sells modifiers that add base, add mult or multiply it, and each run is woven from one of seven pouches of words: everyday English, or one of six themed pouches that each bring a perk.</p>
+        <h3 class="h-small">Key features</h3>
+        <ul class="features">
+          <li>Scoring that rewards the shape of a word: every bend adds to the multiplier, with no cap.</li>
+          <li>Eight-weave runs across easy, medium and hard tiers, with no retries.</li>
+          <li>Seven word pouches, from everyday English to people, places and the natural world; the six themed ones each carry a perk.</li>
+          <li>A shop between weaves, after the next weave is revealed, so builds are planned rather than blind.</li>
+          <li>Shareable eight-character seeds that recreate a run exactly.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cloth cloth--deep shots">
+    <div class="wrap">
+      <div class="shots-head">
+        <h2 class="h-section">Screens</h2>
+        <p class="measure">Renders of Weave's Cozy theme from the current build, 1440 × 2560. The game is in development, so details will change.</p>
+      </div>
+      <ul class="shot-grid">
+        {shots.map((s) => (
+          <li>
+            <Screen src={s.src} alt={s.alt} sizes="(max-width: 760px) 44vw, 260px" />
+            <a href={s.file} download>{s.name} <span>PNG</span></a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cloth cloth--oxblood logos">
+    <div class="wrap">
+      <h2 class="h-section"><span>Logos and icon</span></h2>
+      <ul class="logo-grid">
+        {logos.map((l) => (
+          <li>
+            <span class="logo-tile" style={`background:${l.bg}`}><img src={l.preview} alt={`${l.name}: ${l.note}.`} width="200" height="200" loading="lazy" decoding="async" /></span>
+            <strong>{l.name}</strong>
+            <span class="logo-note">{l.note}</span>
+            <span class="logo-files">{l.files.map(([label, href]) => <a href={href} download>{label}</a>)}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="small terms">Please don't alter the logos or use them in a way that suggests we endorse something. Fan work is welcome; see the <a href="/content-policy/">content policy</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head-actions { margin-top: 32px; }
+  .facts-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .facts { margin: 32px 0 0; display: grid; gap: 14px; }
+  .facts div { display: grid; grid-template-columns: 13ch 1fr; gap: 16px; }
+  .facts dt { font-weight: 800; }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+  .about-game .lead { margin: 32px 0 16px; max-width: none; }
+  .about-game h3 { margin: 40px 0 12px; }
+  .features { padding-left: 1.2em; display: grid; gap: 8px; }
+  .features li::marker { content: '× '; font-weight: 800; }
+  .shots-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 16px 48px; margin-bottom: 48px; }
+  .shots-head .measure { max-width: 52ch; color: var(--floss-dim); }
+  .shot-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px clamp(16px, 2.4vw, 32px); }
+  .shot-grid a { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; font-weight: 800; text-decoration: none; }
+  .shot-grid a span { color: var(--saffron); }
+  .shot-grid a:hover { text-decoration: underline dashed 2px; text-underline-offset: 5px; }
+  .logo-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
+  .logo-grid li { min-width: 0; }
+  .logo-grid li { display: grid; gap: 4px; align-content: start; }
+  .logo-tile { display: grid; place-items: center; aspect-ratio: 1; margin-bottom: 12px; padding: 18%; }
+  .logo-tile { width: 100%; overflow: hidden; }
+  .logo-tile img { width: 100%; height: 100%; min-width: 0; object-fit: contain; }
+  .logo-note { color: var(--rose); font-size: 15px; }
+  .logo-files { display: flex; gap: 18px; margin-top: 6px; font-weight: 800; }
+  .logo-files a { color: var(--saffron); }
+  .terms { margin-top: 48px; color: var(--rose); max-width: 70ch; }
+  .terms a { color: var(--floss); }
+  @media (max-width: 900px) { .facts-grid { grid-template-columns: 1fr; } .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .shot-grid, .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .facts div { grid-template-columns: 1fr; gap: 0; } }
+</style>

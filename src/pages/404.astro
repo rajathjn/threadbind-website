@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Stitched from '../components/Stitched.astro';
+import { site } from '../site.config';
+---
+<BaseLayout title="Page not found | ThreadBind Studios" description="This page came loose from the pattern. Head back to ThreadBind Studios, see Weave, or get help." noindex>
+  <section class="lost">
+    <div class="lost-art" aria-hidden="true">
+      <Stitched text="404" class="lost-num stitched--sew" decorative />
+      <svg class="loose" viewBox="0 0 400 120" fill="none"><path d="M10 20 C 120 20, 90 100, 200 90 S 330 30, 390 100" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 8" /></svg>
+    </div>
+    <div>
+      <h1 class="h-section">A dropped stitch.</h1>
+      <p class="lead">This page came loose from the pattern. It may have moved, or the link may be wrong.</p>
+      <div class="btn-row">
+        <a class="btn" href="/">Back to the start</a>
+        <a class="link-strong" href="/weave/">See Weave</a>
+        <a class="link-strong" href="/support/">Get help</a>
+      </div>
+      <p class="small hint">Think a link here is broken? <a href={site.forms.contact} target="_blank" rel="noopener">Tell us</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lost { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); align-items: center; max-width: 1440px; margin-inline: auto; padding: clamp(32px, 6vw, 80px) var(--gutter) var(--section); }
+  .lost-art { color: var(--vermilion); }
+  .lost-art :global(.lost-num) { width: 100%; height: auto; --step: 10ms; }
+  .loose { width: 80%; margin: 12px 0 0 12%; color: var(--saffron); }
+  .lead { margin: 20px 0 32px; color: var(--floss-dim); }
+  .hint { margin-top: 32px; color: var(--floss-dim); }
+  @media (max-width: 800px) { .lost { grid-template-columns: 1fr; } .lost-art { max-width: 360px; } }
+</style>
